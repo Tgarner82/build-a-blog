@@ -31,11 +31,7 @@ def blog():
 
 @app.route('/single_blog')
 def single_blog():
-    blog_id = int(request.args.get('id'))
-    blog = Blog.query.get(blog_id)
-    db.session.add(blog)
-    db.session.commit()
-    return render_template('singleblog.html', blog=blog)
+    return render_template('singleblog.html')
    
 @app.route('/newpost', methods=['POST','GET'])
 def newpost():
@@ -56,13 +52,13 @@ def newpost():
     return render_template('newpost.html', error=error)
 
 
-# @app.route('/link', methods=['POST','GET'])
-# def link():
-#     blog_id = int(request.args.get('id'))
-#     blog = Blog.query.get(blog_id)
-#     db.session.add(blog)
-#     db.session.commit()
-#     return render_template('singleblog.html', blog=blog)
+@app.route('/link', methods=['POST','GET'])
+def link():
+    blog_id = int(request.args.get('id'))
+    blog = Blog.query.get(blog_id)
+    db.session.add(blog)
+    db.session.commit()
+    return render_template('singleblog.html', blog_id=blog_id)
 
             
     
