@@ -10,6 +10,7 @@ db = SQLAlchemy(app)
 app.secret_key = 'strider'
 
 class Blog(db.Model):
+    # You have the blog creating the unique id here. How do you query it so that it displays? Where would it need to display? 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120))
     body = db.Column(db.String(999))
